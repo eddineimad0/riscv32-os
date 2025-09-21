@@ -1,0 +1,9 @@
+cmake-build/*
+out/*
+*.map
+*.tar
+*.o
+*.elf
+*.bin
+*.log
+*.pcap
