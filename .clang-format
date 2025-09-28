@@ -1,0 +1,24 @@
+BasedOnStyle: LLVM
+Language: C
+
+# Indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never # Use spaces for indentation
+
+# Braces
+BreakBeforeBraces: Custom
+BraceWrapping:
+  # Place the opening brace of a function on a new line
+  AfterFunction: true
+  # Place the opening brace of a control statement (if/for/while) on the same line as the statement
+  AfterControlStatement: false 
+  
+# Pointers
+PointerAlignment: Left 
+
+# Column Limit
+ColumnLimit: 120 
+
+# Includes
+SortIncludes: true # Sorts the include statements alphabetically

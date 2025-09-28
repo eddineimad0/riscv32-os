@@ -3,18 +3,18 @@
 alias bk:= build-kernel
 
 QEMU := "qemu-system-riscv32"
-BUILD_DIR := "./cmake-build"
+BUILD_DIR := "./build"
 OUTPUT_DIR := "./out"
 
 CC := "/usr/bin/clang"
 CFLAGS := "-std=c17 -O2 -g3 -Wall -Wextra -Wpedantic --target=riscv32-unknown-elf -fno-stack-protector -ffreestanding -nostdlib"
-LFLAGS := "-Wl,-Tkernel.ld -Wl,-Map={{OUTPUT_DIR}}/kernel.map"
+LFLAGS := "-Wl,-Tkernel.ld -Wl,-Map=out/kernel.map"
 
 
 default:
 	just --list --unsorted --justfile {{justfile()}} --list-prefix "[+] "
 
-run:
+run: build-kernel
 	{{QEMU}} -machine virt -bios default -nographic -serial mon:stdio --no-reboot -kernel {{OUTPUT_DIR}}/kernel.elf
 
 

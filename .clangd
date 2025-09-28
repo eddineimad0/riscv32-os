@@ -1,0 +1,21 @@
+Diagnostics:
+  Suppress:
+    
+CompileFlags:
+  Add:
+    - -Wall
+    - -Wextra
+    - -Wpedantic
+    - -std=c17
+    - -Wno-incompatible-library-redeclaration
+  Remove:
+
+ClangTidy:
+  Add:
+    - performance-*
+    - modernize-*
+    - bugprone-*
+    - readability-*
+
+CompilationDatabase:
+  Path: "build/clang/"
