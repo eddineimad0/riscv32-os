@@ -8,6 +8,7 @@ CompileFlags:
     - -Wpedantic
     - -std=c17
     - -Wno-incompatible-library-redeclaration
+    - --target=riscv32-unknown-elf
   Remove:
 
 ClangTidy:

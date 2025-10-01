@@ -10,6 +10,8 @@ CC := "/usr/bin/clang"
 CFLAGS := "-std=c17 -O2 -g3 -Wall -Wextra -Wpedantic --target=riscv32-unknown-elf -fno-stack-protector -ffreestanding -nostdlib"
 LFLAGS := "-Wl,-Tkernel.ld -Wl,-Map=out/kernel.map"
 
+SRC_FILES := "boot.S kernel.c common.c"
+
 
 default:
 	just --list --unsorted --justfile {{justfile()}} --list-prefix "[+] "
@@ -23,8 +25,7 @@ build: create_build_dir
 	cmake --build {{BUILD_DIR}}
 
 build-kernel: create_build_dir create_output_dir
-	{{CC}} {{CFLAGS}} {{LFLAGS}} -o {{OUTPUT_DIR}}/kernel.elf kernel.c
-
+	{{CC}} {{CFLAGS}} {{LFLAGS}} -o {{OUTPUT_DIR}}/kernel.elf {{SRC_FILES}} 
 create_build_dir:
 	{{ if path_exists(BUILD_DIR) == "true" {""} else {"mkdir -p " + BUILD_DIR} }}
 

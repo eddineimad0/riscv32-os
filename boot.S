@@ -1,9 +1,11 @@
-.globl boot
+.file "boot.S"
+.option norvc # disables RVC compressed instructions
 
+.globl boot
 .extern __stack_top
 
-.section .text.boot
+.section .text.boot,"ax",@progbits
 boot:
-        mv sp, __stack_top
+        la sp, __stack_top
         j kernel_main
 
